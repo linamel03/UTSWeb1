@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="shortcut icon" href="favicon_io/favicon.ico.ico" type="image/x-icon">
+    <title>Home</title>
+    <style>
+      .whatsapp-chat {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 1000;
+          background-color: #25D366;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+      .whatsapp-chat img {
+          width: 30px; /* Ukuran logo */
+          height: 30px; /* Ukuran logo */
+      }
+      /* Modal Chat di Bawah Tengah */
+      .chat-modal.modal {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 400px;
+            margin: 0;
+        }
+
+        /* Area chat yang di-scroll */
+        .chat-body {
+            max-height: 250px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            margin-bottom: 10px;
+        }
+
+        /* Pesan */
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .message.user {
+            text-align: right;
+            color: #495057;
+        }
+
+        .message.bot {
+            text-align: left;
+            color: #0d6efd;
+        }
+
+        .button-on-top {
+            position: fixed;
+            bottom: 90px; /* Sesuaikan untuk posisi di atas tombol WhatsApp */
+            right: 20px;
+            z-index: 1000;
+            background-color: #007bff; /* Warna tombol */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: #fff;
+        }
+        .package-card {
+            transition: transform 0.3s ease;
+        }
+        .package-card:hover {
+            transform: scale(1.05);
+        }
+        .partner-logo img {
+            max-width: 150px;
+            max-height: 100px;
+            object-fit: contain;
+        }
+        .partner-logo {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease;
+        }
+        .partner-logo:hover {
+            transform: scale(1.1);
+        }
+        .partner-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="favicon_io/apple-touch-icon.png" alt="Bootstrap" width="45" height="45">
+          </a>
+          <a class="navbar-brand" href="#">Amelia Make Up</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="galeri.html">Galeri</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">Tentang Kami</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="tim.html">Our Tim</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kontak.html">Kontak</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <button class="btn btn-outline-success"><a class="nav-link" href="login.html">Login</a></button>
+              <button class="btn btn-outline-success"><a class="nav-link" href="daftar.html">Daftar</a></button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" id="sc">
+          <div class="carousel-item active">
+            <img src="img/pp.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Make Up Artis</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/mak.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Brush Make Up</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/opo.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Make Up Pengantin</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div><br>
+
+      <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h1>Kursus MUA</h1>
+        <p>Kursus MUA (Make Up Artist) penting karena memberikan pemahaman mendalam tentang teknik makeup, produk terbaru, dan tren terkini yang diperlukan untuk menjadi seorang profesional di bidang ini. Melalui pelatihan praktis, peserta dapat mengasah keterampilan secara langsung, membangun portofolio, dan mendapatkan sertifikasi yang meningkatkan kredibilitas. Selain itu, kursus ini juga menawarkan kesempatan untuk menjalin jaringan dengan profesional lain, membuka peluang kerja, dan memperluas klien potensial. Dengan mengikuti kursus, kamu dapat mempercepat pengembangan karier dan meningkatkan kualitas layanan yang diberikan.</p>
+      </div><br>
+
+    <div class="container">
+      <div class="clearfix">
+        <img src="img/IMG_1158.jpg" class="col-md-6 float-md-end mb-3 ms-md-3 w-50 h-30" alt="...">
+        
+        <h2>Sistem Belajar MUA</h2>
+        <p>
+          Sistem belajar MUA (Make Up Artist) biasanya dibagi menjadi beberapa komponen utama yang mencakup teori, praktik, dan pengembangan keterampilan. Di awal kursus, peserta akan mempelajari dasar-dasar makeup, termasuk jenis-jenis kulit, warna, dan produk yang sesuai. Teori ini penting untuk memahami bagaimana makeup dapat diaplikasikan dengan baik sesuai dengan kebutuhan klien dan konteks acara. Selain itu, peserta juga diajarkan tentang alat-alat makeup, teknik pengaplikasian, serta perawatan kulit yang dapat memengaruhi hasil akhir.
+        </p>
+      
+        <p>
+          Setelah memahami teori, fokus akan beralih ke praktik. Peserta biasanya akan mendapatkan kesempatan untuk berlatih langsung di bawah bimbingan instruktur berpengalaman. Praktik ini mencakup berbagai jenis makeup, seperti makeup harian, makeup pesta, dan makeup untuk foto atau film. Melalui sesi praktik, peserta dapat belajar dari kesalahan, mendapatkan umpan balik langsung, dan mengasah kreativitas mereka dalam menciptakan berbagai tampilan yang menarik.
+        </p>
+      
+        <p>
+          Terakhir, pengembangan keterampilan lanjutan menjadi bagian penting dalam sistem belajar MUA. Ini mencakup pelatihan tentang teknik khusus seperti airbrush makeup, makeup untuk bridal, dan penggunaan produk-produk terkini. Selain itu, kursus sering kali mencakup aspek bisnis, seperti cara membangun portofolio, pemasaran diri, dan menjalin hubungan dengan klien. Dengan kombinasi teori, praktik, dan pengembangan keterampilan, peserta diharapkan dapat menjadi MUA yang profesional dan siap menghadapi tantangan di industri makeup.
+        </p>
+      </div>
+    </div><br>
+    
+    <div class="container text-center">
+      <h2>Yang Akan Dipelajari</h2>
+      <div class="row align-items-center">
+        <div class="col">
+          <h4>Make Up Pengantin</h4>
+          <ul>
+            <li>Jenis Makeup Pengantin: Memahami berbagai gaya makeup yang sesuai untuk acara pernikahan, termasuk makeup natural, glam, dan tradisional.</li>
+            <li>Persiapan Kulit: Mempelajari cara merawat kulit sebelum makeup, termasuk teknik hidrasi dan primer untuk memastikan hasil yang tahan lama.</li>
+            <li>Penggunaan Produk: Mengetahui produk yang tepat untuk berbagai jenis kulit dan kondisi cuaca, termasuk foundation, concealer, dan setting spray.</li>
+            <li>Teknik Aplikasi: Menguasai teknik khusus seperti contouring, highlighting, dan penciptaan tampilan mata yang menonjol untuk foto.</li>
+            <li>Koordinasi dengan Tema Pernikahan: Mempelajari cara menyesuaikan makeup dengan tema, warna, dan gaya pernikahan, termasuk pakaian dan aksesori.</li>
+            <li>Konsultasi Klien: Mengembangkan keterampilan komunikasi untuk memahami keinginan dan kebutuhan pengantin, serta memberikan rekomendasi yang tepat.</li>
+            <li>Ketahanan Makeup: Menguasai teknik untuk memastikan makeup tetap sempurna sepanjang hari, termasuk penggunaan produk tahan air dan pengaturan yang baik.</li>
+            <li>Proses Makeup Berlapis: Memahami urutan aplikasi makeup yang efektif untuk mencapai tampilan yang diinginkan dengan hasil akhir yang mulus.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Make Up MUA</h4>
+          <ul>
+            <li>Dasar-dasar Makeup: Memahami jenis-jenis makeup, teknik aplikasi, serta alat dan produk yang digunakan.</li>
+            <li>Anatomi Wajah: Mengetahui bentuk wajah, fitur-fitur, dan bagaimana menyesuaikan makeup untuk setiap klien.</li>
+            <li>Teori Warna: Mempelajari palet warna yang cocok untuk berbagai jenis kulit dan bagaimana menciptakan tampilan yang harmonis.</li>
+            <li>Teknik Khusus: Menguasai berbagai teknik seperti contouring, highlighting, airbrush, dan makeup untuk foto atau video.</li>
+            <li>Perawatan Kulit: Mengetahui cara merawat kulit sebelum dan sesudah aplikasi makeup untuk hasil yang optimal.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Make Up Wisuda</h4>
+          <ul>
+            <li>Gaya Makeup Wisuda: Memahami berbagai gaya makeup yang cocok untuk acara wisuda, baik yang natural maupun glam, sesuai dengan preferensi klien.</li>
+            <li>Persiapan Kulit: Mempelajari cara merawat dan menyiapkan kulit sebelum aplikasi makeup untuk hasil yang optimal dan tahan lama.</li>
+            <li>Pemilihan Produk: Mengetahui produk yang tepat untuk digunakan, seperti foundation, concealer, dan setting spray, yang cocok untuk jenis kulit dan kondisi cuaca.</li>
+            <li>Teknik Aplikasi: Menguasai teknik aplikasi yang tepat, termasuk pengaplikasian foundation yang merata, contouring, dan highlighting untuk menonjolkan fitur wajah.</li>
+            <li>Makeup Tahan Lama: Belajar cara membuat makeup tahan lama, mengingat acara wisuda sering kali berlangsung lama dan banyak foto diambil.</li>
+            <li>Koordinasi dengan Busana: Mempelajari cara menyesuaikan makeup dengan gaun wisuda dan aksesori, sehingga tampilan keseluruhan harmonis.</li>
+            <li>Konsultasi Klien: Mengembangkan keterampilan komunikasi untuk memahami keinginan klien dan memberikan saran yang sesuai.</li>
+            <li>Proses Makeup yang Efisien: Mempelajari urutan aplikasi makeup yang efektif agar proses bisa dilakukan dengan cepat dan hasilnya tetap maksimal.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h2 class="text-center mb-4">Tutorial Make Up</h2>
+      
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <!-- Responsive YouTube Embed -->
+              <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hE4Wpq_Y0V4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+          </div>
+      </div>
+    </div><br>    
+
+  <div class="container bg-primary text-white rounded">
+    <h2 class="text-center">3 Langkah Super Simple</h2>
+    <p class="text-center">Nggak ada yang lebih simpel!</p>
+    <p class="text-center">Di Amelia Make Up kamu bisa raih mimpi step by step dan semudah itu!</p>
+
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="bi bi-pencil-square fs-1"></i>
+                    <h5 class="card-title">Daftar</h5>
+                    <p class="card-text">Gak ribet, daftar dan buat akun. Dalam hitungan detik kamu siap melangkah ke dunia belajar!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="bi bi-book fs-1"></i>
+                    <h5 class="card-title">Belajar</h5>
+                    <p class="card-text">Belajar dengan seru, relevan dengan industri, dan langsung upgrade skill kamu untuk masa depan!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="bi bi-briefcase fs-1"></i>
+                    <h5 class="title">Bekerja</h5>
+                    <p class="card-text">Kami bimbing kamu sampai dapat kerja. Dapatkan tips wawancara, CV keren, dan support lainnya.</p>
+                </div>
+            </div>
+        </div>
+    </div><br>
+</div>
+
+<div class="container mt-5 pt-5">
+  <h1 class="text-center mb-4">Paket Layanan Amelia Make Up</h1>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+          <div class="card package-card shadow-sm">
+              <img src="img/pp.jpg" class="card-img-top" alt="Makeup Pengantin">
+              <div class="card-body">
+                  <h5 class="card-title">Makeup Pengantin</h5>
+                  <p class="card-text">Makeup pengantin untuk acara pernikahan Anda, memberikan kesan memukau di hari istimewa.</p>
+                  <h5 class="text-primary">Harga: Rp 2.500.000</h5>
+                  <a href="https://wa.me/6285712150955" class="btn btn-success">Pesan Sekarang</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="col">
+          <div class="card package-card shadow-sm">
+              <img src="img/mak.jpg" class="card-img-top" alt="Makeup Wisuda">
+              <div class="card-body">
+                  <h5 class="card-title">Makeup Wisuda</h5>
+                  <p class="card-text">Tampilan makeup yang sempurna untuk hari wisuda Anda, memastikan Anda terlihat cantik di setiap foto.</p>
+                  <h5 class="text-primary">Harga: Rp 1.500.000</h5>
+                  <a href="https://wa.me/6285712150955" class="btn btn-success">Pesan Sekarang</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="col">
+          <div class="card package-card shadow-sm">
+              <img src="img/opo.jpg" class="card-img-top" alt="Makeup Event">
+              <div class="card-body">
+                  <h5 class="card-title">Makeup Event</h5>
+                  <p class="card-text">Tampilan makeup untuk acara-acara spesial Anda seperti pesta, acara formal, atau photoshoot.</p>
+                  <h5 class="text-primary">Harga: Rp 1.000.000</h5>
+                  <a href="https://wa.me/6285712150955" class="btn btn-success">Pesan Sekarang</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container mt-5 pt-5">
+  <h1 class="text-center mb-4">Partner Amelia Make Up</h1>
+  <div class="partner-container">
+      <div class="partner-logo shadow-sm">
+          <img src="img/partner (1).jpg" alt="Partner 1">
+          <h5 class="mt-2">Partner 1</h5>
+      </div>
+
+      <div class="partner-logo shadow-sm">
+          <img src="img/partner (2).jpg" alt="Partner 2">
+          <h5 class="mt-2">Partner 2</h5>
+      </div>
+
+      <div class="partner-logo shadow-sm">
+          <img src="img/partner (3).jpg" alt="Partner 3">
+          <h5 class="mt-2">Partner 3</h5>
+      </div>
+
+      <div class="partner-logo shadow-sm">
+          <img src="img/partner (4).jpg" alt="Partner 4">
+          <h5 class="mt-2">Partner 4</h5>
+      </div>
+
+      <div class="partner-logo shadow-sm">
+          <img src="img/partner (5).jpg" alt="Partner 5">
+          <h5 class="mt-2">Partner 5</h5>
+      </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Lokasi Kami</h2>
+  <div class="ratio ratio-16x9">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.727426936182!2d109.7150842!3d-7.0473319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7019caa699e471%3A0x8009329df33ab55e!2sDonowangun%2C%20Kec.%20Talun%2C%20Kabupaten%20Pekalongan%2C%20Jawa%20Tengah!5e0!3m2!1sen!2sid!4v1699292650515!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Review Kursus di Amalia Makeup</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="img/rev.jpg" class="card-img-top" alt="Foto Review 1">
+        <div class="card-body">
+          <h5 class="card-title">Lina A.</h5>
+          <p class="card-text">⭐⭐⭐⭐⭐</p>
+          <p class="card-text">"Saya sangat puas dengan kursus makeup di Amalia Makeup! Instrukturnya sangat profesional dan sabar. Teknik yang diajarkan sangat membantu saya dalam menguasai makeup yang natural dan glam." - Lina A.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="img/rev (1).jpg" class="card-img-top" alt="Foto Review 2">
+        <div class="card-body">
+          <h5 class="card-title">Dian P.</h5>
+          <p class="card-text">⭐⭐⭐⭐⭐</p>
+          <p class="card-text">"Kursus makeup di Amalia Makeup memberikan banyak wawasan dan keterampilan baru! Saya merasa lebih percaya diri setelah belajar teknik makeup yang tepat dan sesuai dengan bentuk wajah saya." - Dian P.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="img/rev (2).jpg" class="card-img-top" alt="Foto Review 3">
+        <div class="card-body">
+          <h5 class="card-title">Rina K.</h5>
+          <p class="card-text">⭐⭐⭐⭐⭐</p>
+          <p class="card-text">"Kursus yang sangat bermanfaat! Saya belajar banyak hal baru, dan instruktur sangat mengerti kebutuhan saya. Amalia Makeup benar-benar membantu saya memoles keterampilan makeup saya." - Rina K.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+  <button id="scrollToTop" class="btn btn-dark sticky-bottom" class="button-on-top"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-airplane-engines-fill" viewBox="0 0 16 16">
+    <path d="M8 0c-.787 0-1.292.592-1.572 1.151A4.35 4.35 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0"/>
+  </svg></button>
+
+    <a href="https://wa.me/6285712150955" class="whatsapp-chat" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white" class="bi bi-whatsapp" viewBox="0 0 16 16">
+        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+      </svg>
+    </a>
+
+    <div class="container mt-5 sticky-bottom">
+      <!-- Tombol untuk membuka modal chat -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chatModal">
+          Open Chat
+      </button>
+  </div>
+  
+  <!-- Modal Chat di Bawah Tengah -->
+  <div class="modal chat-modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="chatModalLabel">Live Chat</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <!-- Area chat untuk menampilkan pesan -->
+                  <div class="chat-body">
+                      <div class="message bot">Selamat datang! Ada yang bisa kami bantu?</div>
+                  </div>
+                  <!-- Form untuk mengirim pesan -->
+                  <form id="chatForm">
+                      <div class="input-group">
+                          <input type="text" class="form-control" id="chatInput" placeholder="Ketik pesan..." required>
+                          <button type="submit" class="btn btn-primary">Kirim</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+    
+  <footer class="bg-dark text-white py-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Amalia Makeup</h5>
+          <p>Kami menyediakan layanan kursus makeup dan juga layanan rias pengantin. Dengan pengalaman dan kualitas terbaik, kami siap membantu Anda tampil lebih percaya diri.</p>
+        </div>
+  
+        <div class="col-md-4">
+          <h5>Tautan Cepat</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-white">Home</a></li>
+            <li><a href="galeri.html" class="text-white">Galeri</a></li>
+            <li><a href="about.html" class="text-white">Tentang Kami</a></li>
+            <li><a href="tim.html" class="text-white">Our Tim</a></li>
+            <li><a href="kontak.html" class="text-white">Kontak</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-md-4">
+          <img src="img/Kopira (1).png" class="img-fluid" alt="Amalia Makeup Logo">
+        </div>
+      </div>
+  
+      <hr class="my-4">
+    
+      <div class="text-center">
+        <p>&copy; 2024 Amalia Makeup. Semua hak dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+ 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <script>
+        // Menangani pengiriman pesan
+        document.getElementById('chatForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const chatInput = document.getElementById('chatInput');
+            const chatBody = document.querySelector('.chat-body');
+            const userMessage = chatInput.value.trim();
+    
+            if (userMessage) {
+                // Tambahkan pesan pengguna ke area chat
+                const userMessageElement = document.createElement('div');
+                userMessageElement.classList.add('message', 'user');
+                userMessageElement.textContent = userMessage;
+                chatBody.appendChild(userMessageElement);
+    
+                // Bersihkan input
+                chatInput.value = '';
+    
+                // Menampilkan respons bot (contoh)
+                const botResponseElement = document.createElement('div');
+                botResponseElement.classList.add('message', 'bot');
+                botResponseElement.textContent = 'Terima kasih atas pesan Anda!';
+                chatBody.appendChild(botResponseElement);
+    
+                // Scroll ke bagian bawah chat
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        });
+        // Mendapatkan tombol
+        const scrollToTopBtn = document.getElementById("scrollToTop");
+
+        // Menampilkan tombol saat menggulir ke bawah
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        // Menyekrol ke atas saat tombol diklik
+        scrollToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+    </script>
+</body>
+</html>
